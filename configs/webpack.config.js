@@ -62,33 +62,21 @@ module.exports = (env = {}) => {
         {
           test: /\.tsx?$/,
           include: PATHS.src,
-          use: (env.awesome ?
-              [
-                {loader: 'react-hot-loader/webpack'},
-                {
-                  loader: 'awesome-typescript-loader',
-                  options: {
-                    transpileOnly: true,
-                    useTranspileModule: false,
-                    sourceMap: isSourceMap,
-                  },
+          use: [
+            {loader: 'react-hot-loader/webpack'},
+            {
+              loader: 'ts-loader',
+              options: {
+                transpileOnly: true,
+                compilerOptions: {
+                  'sourceMap': isSourceMap,
+                  'target': isDev ? 'es2015' : 'es5',
+                  'isolatedModules': true,
+                  'noEmitOnError': false,
                 },
-              ] : [
-                {loader: 'react-hot-loader/webpack'},
-                {
-                  loader: 'ts-loader',
-                  options: {
-                    transpileOnly: true,
-                    compilerOptions: {
-                      'sourceMap': isSourceMap,
-                      'target': isDev ? 'es2015' : 'es5',
-                      'isolatedModules': true,
-                      'noEmitOnError': false,
-                    },
-                  },
-                },
-              ]
-          ),
+              },
+            },
+          ]
         },
         // json
         {

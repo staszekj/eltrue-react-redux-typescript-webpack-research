@@ -3,22 +3,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators, Dispatch} from 'redux';
 import {countersActions} from '../features/counters';
 import {RootState} from '../features/root-reducer';
-import {ActionCreator} from 'Features/counters/reducer';
-
-interface OwnState {
-  count: number;
-}
-
-interface OwnProps {
-}
-
-interface StateProps {
-  reduxCounter: number;
-}
-
-interface DispatchProps {
-  reduxAdd: ActionCreator;
-}
+import {DispatchProps, OwnProps, OwnState, StateProps} from './types';
 
 class CounterClazz extends React.Component<OwnProps & StateProps & DispatchProps, OwnState> {
   interval: number;
