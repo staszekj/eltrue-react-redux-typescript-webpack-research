@@ -4,7 +4,9 @@ exports[`Counter should match a snapshot 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <Provider
+  Symbol(enzyme.__unrendered__): <CounterClazz
+    reduxAdd={[Function]}
+    reduxCounter={0}
     store={
       Object {
         "dispatch": [Function],
@@ -14,9 +16,27 @@ ShallowWrapper {
         Symbol(observable): [Function],
       }
     }
-  >
-    <CounterClazz />
-  </Provider>,
+    storeSubscription={
+      Subscription {
+        "listeners": Object {
+          "clear": [Function],
+          "get": [Function],
+          "notify": [Function],
+          "subscribe": [Function],
+        },
+        "onStateChange": [Function],
+        "parentSub": undefined,
+        "store": Object {
+          "dispatch": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+          Symbol(observable): [Function],
+        },
+        "unsubscribe": [Function],
+      }
+    }
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -27,21 +47,113 @@ ShallowWrapper {
   Symbol(enzyme.__node__): Object {
     "instance": null,
     "key": undefined,
-    "nodeType": "class",
-    "props": Object {},
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <div>
+          Counter: 
+          0
+        </div>,
+        <div>
+          Redux Counter: 
+          0
+        </div>,
+      ],
+    },
     "ref": null,
-    "rendered": null,
-    "type": [Function],
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            "Counter: ",
+            0,
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          "Counter: ",
+          0,
+        ],
+        "type": "div",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            "Redux Counter: ",
+            0,
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          "Redux Counter: ",
+          0,
+        ],
+        "type": "div",
+      },
+    ],
+    "type": "div",
   },
   Symbol(enzyme.__nodes__): Array [
     Object {
       "instance": null,
       "key": undefined,
-      "nodeType": "class",
-      "props": Object {},
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <div>
+            Counter: 
+            0
+          </div>,
+          <div>
+            Redux Counter: 
+            0
+          </div>,
+        ],
+      },
       "ref": null,
-      "rendered": null,
-      "type": [Function],
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              "Counter: ",
+              0,
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            "Counter: ",
+            0,
+          ],
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              "Redux Counter: ",
+              0,
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            "Redux Counter: ",
+            0,
+          ],
+          "type": "div",
+        },
+      ],
+      "type": "div",
     },
   ],
   Symbol(enzyme.__options__): Object {

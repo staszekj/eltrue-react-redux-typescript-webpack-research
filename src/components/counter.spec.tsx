@@ -1,13 +1,12 @@
 import * as React from 'react';
 import {shallow} from 'enzyme';
 import {Counter} from './counter';
-import {Provider} from 'react-redux';
 import {rootReducer} from '../features/root-reducer';
 import {createStore} from 'redux';
 
 describe('Counter', () => {
   const store = createStore(rootReducer, {});
-  const component = shallow(<Provider store={store}><Counter/></Provider>);
+  const component = shallow(<Counter store={store}/>).dive();
 
   it('should match a snapshot', () => {
     expect(component).toMatchSnapshot();
