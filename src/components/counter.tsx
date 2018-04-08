@@ -1,13 +1,25 @@
 import * as React from 'react';
+import {ChangeEvent} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators, Dispatch} from 'redux';
 import {countersActions} from '../features/counters';
 import {RootState} from '../features/root-reducer';
 import {DispatchProps, OwnProps, OwnState, StateProps} from './types';
 
-class CounterClazz extends React.Component<OwnProps & StateProps & DispatchProps, OwnState> {
+type CounterProps = OwnProps & StateProps & DispatchProps;
+
+class CounterClazz extends React.Component<CounterProps, OwnState> {
   interval: number;
-  state = {count: 0};
+  state: OwnState = {count: 0};
+
+  constructor(props: CounterProps) {
+    super(props);
+    this.onCounterTxtChange = this.onCounterTxtChange.bind(this);
+  }
+
+  onCounterTxtChange(event: ChangeEvent<HTMLInputElement>) {
+    this.setState({...this.state, txt: event.target.value});
+  }
 
   componentWillMount() {
     const incrementCounter = () => {
@@ -25,7 +37,9 @@ class CounterClazz extends React.Component<OwnProps & StateProps & DispatchProps
     return (
       <div>
         <div>Counter: {this.state.count}</div>
+        <div>Text: {this.state.txt}</div>
         <div>Redux Counter: {this.props.reduxCounter}</div>
+        <div><input onChange={this.onCounterTxtChange}/></div>
       </div>
     );
   }

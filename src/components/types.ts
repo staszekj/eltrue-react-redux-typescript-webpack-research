@@ -3,6 +3,7 @@ import {Action, Dispatch, Store} from 'redux';
 
 export interface OwnState {
   count: number;
+  txt: string;
 }
 
 export interface OwnProps {
