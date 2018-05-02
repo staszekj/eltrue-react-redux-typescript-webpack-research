@@ -2,15 +2,16 @@ import * as React from 'react';
 import {ChangeEvent} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators, Dispatch} from 'redux';
-import {countersActions} from '../features/counters';
-import {RootState} from '../features/root-reducer';
-import {DispatchProps, OwnProps, OwnState, StateProps} from './types';
+import * as countersActions from './counter.actions';
+import {RootState} from '../root-reducer';
+import {DispatchProps, OwnProps, OwnState, StateProps} from './counter.types';
+import Display from '../7segments';
 
 type CounterProps = OwnProps & StateProps & DispatchProps;
 
 class CounterClazz extends React.Component<CounterProps, OwnState> {
   interval: number;
-  state: OwnState = {count: 0};
+  state: OwnState = {count: 0, txt: ''};
 
   constructor(props: CounterProps) {
     super(props);
@@ -39,6 +40,7 @@ class CounterClazz extends React.Component<CounterProps, OwnState> {
         <div>Counter: {this.state.count}</div>
         <div>Text: {this.state.txt}</div>
         <div>Redux Counter: {this.props.reduxCounter}</div>
+        <Display value={this.props.reduxCounter}/>
         <div><input onChange={this.onCounterTxtChange}/></div>
       </div>
     );

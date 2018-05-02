@@ -1,6 +1,6 @@
 import {combineReducers} from 'redux';
 import {FluxStandardAction, getType} from 'typesafe-actions';
-import * as countersActions from './actions';
+import * as countersActions from './counter.actions';
 
 export type Action = FluxStandardAction<string>;
 export type ActionCreator = (...args: any[]) => Action;

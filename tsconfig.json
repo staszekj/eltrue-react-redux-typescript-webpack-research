@@ -5,12 +5,6 @@
     "paths": {
       "redux": [
         "src/typings/redux.d.ts"
-      ],
-      "Components/*": [
-        "src/components/*"
-      ],
-      "Features/*": [
-        "src/features/*"
       ]
     },
     "outDir": "out/",
@@ -19,7 +13,7 @@
     // no errors on commonjs default import
     "allowJs": true,
     // include js files
-    "checkJs": true,
+    "checkJs": false,
     // typecheck js files
     "declaration": false,
     // don't emit declarations
@@ -58,7 +52,6 @@
   ],
   "exclude": [
     "node_modules",
-    "dist",
-    "src/**/*.spec.*"
+    "dist"
   ]
 }

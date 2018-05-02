@@ -1,4 +1,4 @@
-import {ActionCreator} from 'Features/counters/reducer';
+import {ActionCreator} from './counter.reducer';
 import {Action, Dispatch, Store} from 'redux';
 
 export interface OwnState {

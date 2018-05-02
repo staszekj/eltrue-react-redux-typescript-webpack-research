@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {shallow} from 'enzyme';
 import {Counter} from './counter';
-import {rootReducer} from '../features/root-reducer';
+import {rootReducer} from '../root-reducer';
 import {createStore} from 'redux';
 
 describe('Counter', () => {

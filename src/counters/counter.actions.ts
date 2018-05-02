@@ -1,5 +1,5 @@
 import {createAction} from 'typesafe-actions';
-import {ActionCreator} from './reducer';
+import {ActionCreator} from './counter.reducer';
 
 const INCREMENT = 'INCREMENT';
 const ADD = 'ADD';

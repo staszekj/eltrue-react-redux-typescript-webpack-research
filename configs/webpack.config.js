@@ -11,8 +11,6 @@ const PATHS = {
 };
 
 const DEV_SERVER = {
-  hot: true,
-  hotOnly: true,
   historyApiFallback: true,
   overlay: true,
   // stats: 'verbose',
@@ -36,7 +34,7 @@ module.exports = (env = {}) => {
 
     entry: {
       app: [
-        'react-hot-loader/patch',
+        'babel-polyfill',
         './src/index.tsx',
       ],
     },
@@ -63,17 +61,25 @@ module.exports = (env = {}) => {
           test: /\.tsx?$/,
           include: PATHS.src,
           use: [
-            {loader: 'react-hot-loader/webpack'},
             {
               loader: 'ts-loader',
               options: {
                 transpileOnly: true,
                 compilerOptions: {
                   'sourceMap': isSourceMap,
-                  'target': isDev ? 'es2015' : 'es5',
-                  'isolatedModules': true,
-                  'noEmitOnError': false,
                 },
+              },
+            },
+          ]
+        },
+        {
+          test: /(\.js)|(\.jsx)$/,
+          exclude: /(node_modules)/,
+          use: [
+            {
+              loader: 'babel-loader',
+              options: {
+                'sourceMap': isSourceMap,
               },
             },
           ]
@@ -147,12 +153,6 @@ module.exports = (env = {}) => {
       new HtmlWebpackPlugin({
         template: './index.html'
       }),
-      ...(isDev ? [
-        new webpack.HotModuleReplacementPlugin({
-          // multiStep: true, // better performance with many files
-        }),
-        new webpack.NamedModulesPlugin(),
-      ] : []),
       ...(isBuild ? [
         new webpack.LoaderOptionsPlugin({
           minimize: true,

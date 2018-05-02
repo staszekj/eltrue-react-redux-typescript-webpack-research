@@ -5,8 +5,8 @@ import {ConnectedRouter} from 'react-router-redux';
 import {Route} from 'react-router-dom';
 import {History} from 'history';
 
-import {ListView} from 'Components/list-view';
-import {Counter} from 'Components/counter';
+import {ListView} from './list-view/list-view';
+import {Counter} from './counters/counter';
 
 interface Props {
   store: Store<any>;
