@@ -1,6 +1,6 @@
 // public API
 import * as countersActions from './counter.actions';
-import {reducer, State} from './counter.reducer';
+import {CounterState, reducer} from './counter.reducer';
 // export * from './epics';
 
-export {reducer, State, countersActions};
+export {reducer, CounterState, countersActions};

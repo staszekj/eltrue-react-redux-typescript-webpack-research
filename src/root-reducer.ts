@@ -1,7 +1,7 @@
 import {combineReducers} from 'redux';
 import {routerReducer as router, RouterState} from 'react-router-redux';
 
-import {reducer as counters, State as CountersState} from './counters/counter.reducer';
+import {CounterState as CountersState, reducer as counters} from './counters/counter.reducer';
 import {RootAction} from './root-action';
 
 interface StoreEnhancerState {

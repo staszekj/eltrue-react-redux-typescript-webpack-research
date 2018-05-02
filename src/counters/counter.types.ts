@@ -1,5 +1,6 @@
-import {ActionCreator} from './counter.reducer';
 import {Action, Dispatch, Store} from 'redux';
+import {FluxStandardAction} from 'typesafe-actions';
+import {ActionCreator} from 'react-redux';
 
 export interface OwnState {
   count: number;
@@ -16,5 +17,5 @@ export interface StateProps {
 }
 
 export interface DispatchProps {
-  reduxAdd: ActionCreator;
+  reduxAdd: ActionCreator<FluxStandardAction<string>>;
 }

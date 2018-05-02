@@ -2,7 +2,7 @@
 import {LocationChangeAction, RouterAction} from 'react-router-redux';
 
 import * as countersActions from './counters/counter.actions';
-import {Action} from './counters/counter.reducer';
+import {FluxStandardAction} from 'typesafe-actions';
 
 export const actions = {
   counters: countersActions,
@@ -11,5 +11,5 @@ export const actions = {
 type ReactRouterAction = RouterAction | LocationChangeAction;
 
 export type RootAction =
-  | Action
+  | FluxStandardAction<string>
   | ReactRouterAction;

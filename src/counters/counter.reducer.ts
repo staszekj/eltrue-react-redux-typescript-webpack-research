@@ -2,13 +2,11 @@ import {combineReducers} from 'redux';
 import {FluxStandardAction, getType} from 'typesafe-actions';
 import * as countersActions from './counter.actions';
 
-export type Action = FluxStandardAction<string>;
-export type ActionCreator = (...args: any[]) => Action;
-export type State = {
-  readonly reduxCounter: number;
-};
+export interface CounterState {
+  reduxCounter: number;
+}
 
-export const reducer = combineReducers<State, Action>({
+export const reducer = combineReducers<CounterState, FluxStandardAction<string>>({
   reduxCounter: (state = 0, action) => {
     switch (action.type) {
       case getType(countersActions.increment):
