@@ -20,7 +20,6 @@ const DEV_SERVER = {
 };
 
 module.exports = (env = {}) => {
-  console.log({env});
   const isBuild = !!env.build;
   const isDev = !env.build;
   const isSourceMap = !!env.sourceMap || isDev;
@@ -90,6 +89,10 @@ module.exports = (env = {}) => {
           include: [PATHS.src],
           use: {loader: 'json-loader'},
         },
+        {
+          test: /\.scss$/,
+          loaders: ['style-loader', 'css-loader', 'sass-loader']
+        }
         // // css
         // {
         //   test: /\.css$/,
@@ -143,13 +146,13 @@ module.exports = (env = {}) => {
           NODE_ENV: JSON.stringify(isDev ? 'development' : 'production'),
         },
       }),
-      new webpack.optimize.CommonsChunkPlugin({
-        name: 'vendor',
-        minChunks: (module) => module.context && module.context.indexOf('node_modules') !== -1,
-      }),
-      new webpack.optimize.CommonsChunkPlugin({
-        name: 'manifest',
-      }),
+      // new webpack.optimize.CommonsChunkPlugin({
+      //   name: 'vendor',
+      //   minChunks: (module) => module.context && module.context.indexOf('node_modules') !== -1,
+      // }),
+      // new webpack.optimize.CommonsChunkPlugin({
+      //   name: 'manifest',
+      // }),
       new HtmlWebpackPlugin({
         template: './index.html'
       }),

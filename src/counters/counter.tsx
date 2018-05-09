@@ -6,6 +6,9 @@ import * as countersActions from './counter.actions';
 import {RootState} from '../root-reducer';
 import {DispatchProps, OwnProps, OwnState, StateProps} from './counter.types';
 import Display from '../7segments';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import RaisedButton from 'material-ui/RaisedButton';
+import style from './counter.scss';
 
 type CounterProps = OwnProps & StateProps & DispatchProps;
 
@@ -16,6 +19,7 @@ class CounterClazz extends React.Component<CounterProps, OwnState> {
   constructor(props: CounterProps) {
     super(props);
     this.onCounterTxtChange = this.onCounterTxtChange.bind(this);
+    this.incrementBy100 = this.incrementBy100.bind(this);
   }
 
   onCounterTxtChange(event: ChangeEvent<HTMLInputElement>) {
@@ -27,19 +31,28 @@ class CounterClazz extends React.Component<CounterProps, OwnState> {
       this.setState({count: this.state.count + 1});
       this.props.reduxAdd(10);
     };
-    this.interval = setInterval(incrementCounter, 1000);
+    this.interval = window.setInterval(incrementCounter, 1000);
   }
 
   componentWillUnmount() {
     clearInterval(this.interval);
   }
 
+  incrementBy100() {
+    this.props.reduxAdd(100);
+  }
+
   render() {
     return (
       <div>
-        <div>Counter: {this.state.count}</div>
+        <div className={style.counterBlue}>Counter: {this.state.count}</div>
         <div>Text: {this.state.txt}</div>
         <div>Redux Counter: {this.props.reduxCounter}</div>
+        <div>
+          <MuiThemeProvider>
+            <RaisedButton label="Add 100" onClick={this.incrementBy100}/>
+          </MuiThemeProvider>
+        </div>
         <Display value={this.props.reduxCounter}/>
         <div><input onChange={this.onCounterTxtChange}/></div>
       </div>
@@ -51,7 +64,7 @@ const mapStateToProps = (state: RootState): StateProps => {
   return {reduxCounter: state.counters.reduxCounter};
 };
 
-const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => ({
+const mapDispatchToProps = (dispatch: Dispatch<RootState>): DispatchProps => ({
   reduxAdd: bindActionCreators(countersActions.add, dispatch),
 });
 
